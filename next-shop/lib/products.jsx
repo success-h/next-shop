@@ -1,10 +1,11 @@
 import { fetchJson } from "./api";
 
 const { CMS_URL } = process.env;
+const { IMG_URL } = process.env;
 
 export async function getProduct(id) {
   const data = await fetchJson(`${CMS_URL}products/${id}?populate=image`);
-  console.log(data);
+  console.log(IMG_URL);
   const product = await data.data;
   return product;
 }

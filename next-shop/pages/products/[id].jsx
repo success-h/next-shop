@@ -2,6 +2,7 @@ import React from "react";
 import { ApiError } from "../../lib/api";
 import Image from "next/image";
 import { getProduct, getProducts } from "../../lib/products";
+import Page from "../../components/Page";
 
 export const getStaticPaths = async () => {
   const products = await getProducts();
@@ -32,7 +33,6 @@ export const getStaticProps = async ({ params: { id } }) => {
 };
 
 const ProductDetail = ({ product }) => {
-  const { IMG_URL } = process.env;
   const {
     attributes: {
       title,
@@ -47,19 +47,22 @@ const ProductDetail = ({ product }) => {
   } = product;
 
   return (
-    <ul>
-      <li>
-        <h2 className="text-2xl font-bold">{title}</h2>
+    <Page title={title}>
+      <li className="grid lg:grid-cols-2 p-10">
         <Image
-          width={920}
-          height={540}
+          width={640}
+          height={480}
           src={`http://localhost:1337${url}`}
           alt="new"
+          className=""
         />
-        <p>{description}</p>
-        <p>{price}</p>
+        <div className="w-sm p-10 m-auto">
+          <h2 className="text-2xl font-bold">{title}</h2>
+          <p>{description}</p>
+          <p>{price}</p>
+        </div>
       </li>
-    </ul>
+    </Page>
   );
 };
 export default ProductDetail;

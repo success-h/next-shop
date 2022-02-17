@@ -15,8 +15,7 @@ const ProductCard = ({ product }) => {
       },
     },
   } = product;
-  console.log("IMG_URL:", IMG_URL);
-  console.log("Url:", url);
+
   return (
     <div className="border my-4 w-80">
       <Link href={`/products/${product.id}`}>
