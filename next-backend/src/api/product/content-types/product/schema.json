@@ -4,8 +4,7 @@
   "info": {
     "singularName": "product",
     "pluralName": "products",
-    "displayName": "Products",
-    "description": ""
+    "displayName": "Products"
   },
   "options": {
     "draftAndPublish": true
@@ -19,22 +18,22 @@
       "type": "text"
     },
     "price": {
-      "type": "decimal"
+      "type": "float"
     },
     "image": {
-      "type": "media",
-      "multiple": false,
-      "required": false,
       "allowedTypes": [
         "images",
         "files",
-        "videos"
-      ]
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
     },
-    "users_permissions_user": {
+    "cart_item": {
       "type": "relation",
       "relation": "manyToOne",
-      "target": "plugin::users-permissions.user",
+      "target": "api::cart-item.cart-item",
       "inversedBy": "products"
     }
   }
